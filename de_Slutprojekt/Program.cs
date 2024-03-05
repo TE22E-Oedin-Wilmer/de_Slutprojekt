@@ -73,7 +73,7 @@ while (!Raylib.WindowShouldClose())
     if (currentRoom == 1)  //  ROOM 1*******************************************************************************************************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
-
+        Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 2, 100, Color.DarkBrown);
     }
 
     Raylib.EndDrawing();
