@@ -12,8 +12,31 @@ Raylib.SetTargetFPS(60);                                   //set target fps for 
 
 Texture2D pixelDojo = Raylib.LoadTexture("PixelDojo.png");
 
+Texture2D ladyFighterEat = Raylib.LoadTexture("./assets/Eating.png");
+
+Texture2D ladyFighterIdle = Raylib.LoadTexture("de_Slutprojekt/Kunoichi/Idle.png");
+
+Texture2D monkFighterIdle = Raylib.LoadTexture("de_Slutprojekt/Ninja_Monk/Idle.png");
+
+Texture2D plebFighterIdle = Raylib.LoadTexture("de_Slutprojekt/Ninja_Peasant/Idle.png");
+
 pixelDojo.Width = Raylib.GetMonitorWidth(monitordisplay);
 pixelDojo.Height = Raylib.GetMonitorHeight(monitordisplay);
+
+// ladyFighterEat.Width = 600;
+// ladyFighterEat.Height = 600;
+
+ladyFighterIdle.Width = 100;
+ladyFighterIdle.Height = 100;
+
+monkFighterIdle.Width = 100;
+monkFighterIdle.Height = 100;
+
+plebFighterIdle.Width = 100;
+plebFighterIdle.Height = 100;
+
+
+
 
 int currentRoom = 0;
 
@@ -73,7 +96,8 @@ while (!Raylib.WindowShouldClose())
     if (currentRoom == 1)  //  ROOM 1*******************************************************************************************************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
-        Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 2, 100, Color.DarkBrown);
+        Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 4, 100, Color.RayWhite);
+        Raylib.DrawTexture(ladyFighterEat, 0, 0, Color.White);
     }
 
     Raylib.EndDrawing();
