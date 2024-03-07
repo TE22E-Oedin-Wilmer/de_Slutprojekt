@@ -12,19 +12,19 @@ Raylib.SetTargetFPS(60);                                   //set target fps for 
 
 Texture2D pixelDojo = Raylib.LoadTexture("PixelDojo.png");
 
-Texture2D ladyFighterEat = Raylib.LoadTexture("./assets/Eating.png");
+Texture2D ladyFighterEat = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Eating.png");
 
-Texture2D ladyFighterIdle = Raylib.LoadTexture("de_Slutprojekt/Kunoichi/Idle.png");
+Texture2D ladyFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Idle.png");
 
-Texture2D monkFighterIdle = Raylib.LoadTexture("de_Slutprojekt/Ninja_Monk/Idle.png");
+Texture2D monkFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Idle.png");
 
-Texture2D plebFighterIdle = Raylib.LoadTexture("de_Slutprojekt/Ninja_Peasant/Idle.png");
+Texture2D plebFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Idle.png");
 
 pixelDojo.Width = Raylib.GetMonitorWidth(monitordisplay);
 pixelDojo.Height = Raylib.GetMonitorHeight(monitordisplay);
 
-// ladyFighterEat.Width = 600;
-// ladyFighterEat.Height = 600;
+ladyFighterEat.Width = 300;
+ladyFighterEat.Height = 300;
 
 ladyFighterIdle.Width = 100;
 ladyFighterIdle.Height = 100;
@@ -66,19 +66,19 @@ while (!Raylib.WindowShouldClose())
         }
     }
 
-    Raylib.BeginDrawing(); 
-/*_____                                                       _____ 
-( ___ )-----------------------------------------------------( ___ )
- |   |                                                       |   | 
- |   |  ____                              _                  |   | 
- |   | |  _ \   _ __    __ _  __      __ (_)  _ __     __ _  |   | 
- |   | | | | | | '__|  / _` | \ \ /\ / / | | | '_ \   / _` | |   | 
- |   | | |_| | | |    | (_| |  \ V  V /  | | | | | | | (_| | |   | 
- |   | |____/  |_|     \__,_|   \_/\_/   |_| |_| |_|  \__, | |   | 
- |   |                                                |___/  |   | 
- |___|                                                       |___| 
-(_____)-----------------------------------------------------(_____)                                                         
-*/
+    Raylib.BeginDrawing();
+    /*_____                                                       _____ 
+    ( ___ )-----------------------------------------------------( ___ )
+     |   |                                                       |   | 
+     |   |  ____                              _                  |   | 
+     |   | |  _ \   _ __    __ _  __      __ (_)  _ __     __ _  |   | 
+     |   | | | | | | '__|  / _` | \ \ /\ / / | | | '_ \   / _` | |   | 
+     |   | | |_| | | |    | (_| |  \ V  V /  | | | | | | | (_| | |   | 
+     |   | |____/  |_|     \__,_|   \_/\_/   |_| |_| |_|  \__, | |   | 
+     |   |                                                |___/  |   | 
+     |___|                                                       |___| 
+    (_____)-----------------------------------------------------(_____)                                                         
+    */
     if (currentRoom == 0) // ROOM 0**********************************************************************************************************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
@@ -97,8 +97,18 @@ while (!Raylib.WindowShouldClose())
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
         Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 4, 100, Color.RayWhite);
-        Raylib.DrawTexture(ladyFighterEat, 0, 0, Color.White);
+        Raylib.DrawTexture(ladyFighterEat, 300, 400, Color.White);
     }
+
+
+    static void DrawLadyEat()
+    {
+        numFrames = 9;
+        frameWidth = ladyFighterEat.Width / numFrames;
+       
+        Raylib.DrawTexture(ladyFighterEat, 300, 400, Color.White);
+    }
+
 
     Raylib.EndDrawing();
 }
