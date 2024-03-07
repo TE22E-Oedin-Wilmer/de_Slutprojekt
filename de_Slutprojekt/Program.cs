@@ -105,8 +105,12 @@ while (!Raylib.WindowShouldClose())
     {
         numFrames = 9;
         frameWidth = ladyFighterEat.Width / numFrames;
-       
+        frameRect = Raylib.Rectangle(0.0f, 0.0f, (float)frameWidth, (float)ladyFighterEat.height)
         Raylib.DrawTexture(ladyFighterEat, 300, 400, Color.White);
+
+        frameDelay = 5.0f / 60.0f;
+        frameDelayCounter = 0;
+        frameIndex = 0;
     }
 
 
