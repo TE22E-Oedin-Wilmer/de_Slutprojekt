@@ -1,4 +1,6 @@
 ﻿using Raylib_cs;
+using System.Numerics;
+
 
 int display = Raylib.GetCurrentMonitor();    //get monitor display
 
@@ -23,8 +25,8 @@ Texture2D plebFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\
 pixelDojo.Width = Raylib.GetMonitorWidth(monitordisplay);
 pixelDojo.Height = Raylib.GetMonitorHeight(monitordisplay);
 
-ladyFighterEat.Width = 300;
-ladyFighterEat.Height = 300;
+ladyFighterEat.Width = 4608;
+ladyFighterEat.Height = 512;
 
 ladyFighterIdle.Width = 100;
 ladyFighterIdle.Height = 100;
@@ -36,6 +38,11 @@ plebFighterIdle.Width = 100;
 plebFighterIdle.Height = 100;
 
 
+int numFrames = 9;
+float frameWidth = (float)(ladyFighterEat.Width / 9);
+float timer = 0.0f;
+int frame = 0;
+int maxFrames = (int)(ladyFighterEat.Width / (int)frameWidth);
 
 
 int currentRoom = 0;
@@ -43,7 +50,7 @@ int currentRoom = 0;
 while (!Raylib.WindowShouldClose())
 {
 
-    if (currentRoom == 0)
+    if (currentRoom == 0)    // ROOM 0 *************************************************************************************************************
     {
         if (Raylib.IsKeyPressed(KeyboardKey.Enter) && (Raylib.IsKeyDown(KeyboardKey.LeftAlt) || Raylib.IsKeyDown(KeyboardKey.RightAlt)))
         {
@@ -64,6 +71,23 @@ while (!Raylib.WindowShouldClose())
             // Toggle fullscreen state
             Raylib.ToggleFullscreen();
         }
+        if (Raylib.IsKeyPressed(KeyboardKey.P))
+        {
+            currentRoom = 1;
+        }
+    }
+
+    if (currentRoom == 1)
+    {
+        timer += Raylib.GetFrameTime();
+        if (timer >= 0.2f)
+        {
+            timer = 0.0f;
+            frame += 1;
+        }
+
+        frame = frame % maxFrames;
+
     }
 
     Raylib.BeginDrawing();
@@ -87,31 +111,21 @@ while (!Raylib.WindowShouldClose())
 
         Raylib.DrawText("Press [P] to play", screenWidth / 2 + 110, screenHeight, 100, Color.Gold);
 
-        if (Raylib.IsKeyPressed(KeyboardKey.P))
-        {
-            currentRoom = 1;
-        }
     }
 
     if (currentRoom == 1)  //  ROOM 1*******************************************************************************************************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
+
         Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 4, 100, Color.RayWhite);
-        Raylib.DrawTexture(ladyFighterEat, 300, 400, Color.White);
+        Raylib.DrawTextureRec(
+                ladyFighterEat,
+                new Rectangle((frameWidth * frame), 0, frameWidth, (float)ladyFighterEat.Height),
+                new Vector2(100, 100),
+                Color.White);
     }
 
 
-    static void DrawLadyEat()
-    {
-        numFrames = 9;
-        frameWidth = ladyFighterEat.Width / numFrames;
-        frameRect = Raylib.Rectangle(0.0f, 0.0f, (float)frameWidth, (float)ladyFighterEat.height)
-        Raylib.DrawTexture(ladyFighterEat, 300, 400, Color.White);
-
-        frameDelay = 5.0f / 60.0f;
-        frameDelayCounter = 0;
-        frameIndex = 0;
-    }
 
 
     Raylib.EndDrawing();
