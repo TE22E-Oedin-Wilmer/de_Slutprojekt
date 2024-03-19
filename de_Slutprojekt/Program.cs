@@ -25,24 +25,36 @@ Texture2D plebFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\
 pixelDojo.Width = Raylib.GetMonitorWidth(monitordisplay);
 pixelDojo.Height = Raylib.GetMonitorHeight(monitordisplay);
 
-ladyFighterEat.Width = 4608;
-ladyFighterEat.Height = 512;
+ladyFighterEat.Width = 9216;
+ladyFighterEat.Height = 1024;
 
 ladyFighterIdle.Width = 100;
 ladyFighterIdle.Height = 100;
 
-monkFighterIdle.Width = 100;
-monkFighterIdle.Height = 100;
+monkFighterIdle.Width = 4704;
+monkFighterIdle.Height = 672;
 
-plebFighterIdle.Width = 100;
-plebFighterIdle.Height = 100;
+plebFighterIdle.Width = 4608;
+plebFighterIdle.Height = 768;
 
 
-int numFrames = 9;
-float frameWidth = (float)(ladyFighterEat.Width / 9);
-float timer = 0.0f;
-int frame = 0;
-int maxFrames = (int)(ladyFighterEat.Width / (int)frameWidth);
+int numFramesL = 9;
+float frameWidthL = (float)(ladyFighterEat.Width / numFramesL);
+float timerL = 0.0f;
+int frameL = 0;
+int maxFramesL = (int)(ladyFighterEat.Width / (int)frameWidthL);
+
+int numFramesM = 7;
+float frameWidthM = (float)(monkFighterIdle.Width / numFramesM);
+float timerM = 0.0f;
+int frameM = 0;
+int maxFramesM = (int)(monkFighterIdle.Width / (int)frameWidthM);
+
+int numFramesP = 6;
+float frameWidthP = (float)(plebFighterIdle.Width / numFramesP);
+float timerP = 0.0f;
+int frameP = 0;
+int maxFramesP = (int)(plebFighterIdle.Width / (int)frameWidthP);
 
 
 int currentRoom = 0;
@@ -79,14 +91,32 @@ while (!Raylib.WindowShouldClose())
 
     if (currentRoom == 1)
     {
-        timer += Raylib.GetFrameTime();
-        if (timer >= 0.2f)
+        timerL += Raylib.GetFrameTime();
+        if (timerL >= 0.2f)
         {
-            timer = 0.0f;
-            frame += 1;
+            timerL = 0.0f;
+            frameL += 1;
         }
 
-        frame = frame % maxFrames;
+        frameL = frameL % maxFramesL;
+
+         timerM += Raylib.GetFrameTime();
+        if (timerM >= 0.2f)
+        {
+            timerM = 0.0f;
+            frameM += 1;
+        }
+
+        frameM = frameM % maxFramesM;
+
+                 timerP += Raylib.GetFrameTime();
+        if (timerP >= 0.2f)
+        {
+            timerP = 0.0f;
+            frameP += 1;
+        }
+
+        frameP = frameP % maxFramesP;
 
     }
 
@@ -107,8 +137,6 @@ while (!Raylib.WindowShouldClose())
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
         Raylib.DrawText("Press Alt + Enter to toggle fullscreen", 100, 100, 30, Color.White);
-
-
         Raylib.DrawText("Press [P] to play", screenWidth / 2 + 110, screenHeight, 100, Color.Gold);
 
     }
@@ -120,9 +148,22 @@ while (!Raylib.WindowShouldClose())
         Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 4, 100, Color.RayWhite);
         Raylib.DrawTextureRec(
                 ladyFighterEat,
-                new Rectangle((frameWidth * frame), 0, frameWidth, (float)ladyFighterEat.Height),
-                new Vector2(100, 100),
+                new Rectangle((frameWidthL * frameL), 0, frameWidthL, (float)ladyFighterEat.Height),
+                new Vector2(100, 50),
                 Color.White);
+
+        Raylib.DrawTextureRec(
+                monkFighterIdle,
+                new Rectangle((frameWidthM * frameM), 0, frameWidthM, (float)monkFighterIdle.Height),
+                new Vector2(600, 400),
+                Color.White);
+
+        Raylib.DrawTextureRec(
+                plebFighterIdle,
+                new Rectangle((frameWidthP * frameP), 0, frameWidthP, (float)plebFighterIdle.Height),
+                new Vector2(900, 350),
+                Color.White);
+
     }
 
 
