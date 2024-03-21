@@ -100,7 +100,7 @@ while (!Raylib.WindowShouldClose())
 
         frameL = frameL % maxFramesL;
 
-         timerM += Raylib.GetFrameTime();
+        timerM += Raylib.GetFrameTime();
         if (timerM >= 0.2f)
         {
             timerM = 0.0f;
@@ -109,7 +109,7 @@ while (!Raylib.WindowShouldClose())
 
         frameM = frameM % maxFramesM;
 
-                 timerP += Raylib.GetFrameTime();
+        timerP += Raylib.GetFrameTime();
         if (timerP >= 0.2f)
         {
             timerP = 0.0f;
@@ -163,6 +163,21 @@ while (!Raylib.WindowShouldClose())
                 new Rectangle((frameWidthP * frameP), 0, frameWidthP, (float)plebFighterIdle.Height),
                 new Vector2(900, 350),
                 Color.White);
+
+        if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
+        {
+        Raylib.DrawText("->", 400, 600, 100, Color.Gold);
+        }
+
+        else if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
+        {
+        Raylib.DrawText("->", 400, 600, 100, Color.Gold);
+        }
+
+        else if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
+        {
+        Raylib.DrawText("->", 400, 600, 100, Color.Gold);
+        }
 
     }
 
