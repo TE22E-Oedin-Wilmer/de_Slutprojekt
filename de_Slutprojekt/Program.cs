@@ -56,6 +56,7 @@ float timerP = 0.0f;
 int frameP = 0;
 int maxFramesP = (int)(plebFighterIdle.Width / (int)frameWidthP);
 
+string chosenCharacter = "none";
 
 int currentRoom = 0;
 
@@ -91,23 +92,26 @@ while (!Raylib.WindowShouldClose())
 
     if (currentRoom == 1)
     {
-        timerL += Raylib.GetFrameTime();
-        if (timerL >= 0.2f)
-        {
-            timerL = 0.0f;
-            frameL += 1;
-        }
+        // timerL += Raylib.GetFrameTime();
+        // if (timerL >= 0.2f)
+        // {
+        //     timerL = 0.0f;
+        //     frameL += 1;
+        // }
 
-        frameL = frameL % maxFramesL;
+        // frameL = frameL % maxFramesL;
 
-        timerM += Raylib.GetFrameTime();
-        if (timerM >= 0.2f)
-        {
-            timerM = 0.0f;
-            frameM += 1;
-        }
+        animation(timerL, frameL, maxFramesL);
 
-        frameM = frameM % maxFramesM;
+            timerM += Raylib.GetFrameTime();
+            if (timerM >= 0.2f)
+            {
+                timerM = 0.0f;
+                frameM += 1;
+            }
+
+            frameM = frameM % maxFramesM;
+
 
         timerP += Raylib.GetFrameTime();
         if (timerP >= 0.2f)
@@ -166,23 +170,52 @@ while (!Raylib.WindowShouldClose())
 
         if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
         {
-        Raylib.DrawText("->", 400, 600, 100, Color.Gold);
+            Raylib.DrawText("->", 400, 600, 100, Color.Gold);
         }
 
-        else if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
+        else if (Raylib.GetMouseX() >= 800 && Raylib.GetMouseX() <= 1000 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
         {
-        Raylib.DrawText("->", 400, 600, 100, Color.Gold);
+            Raylib.DrawText("->", 740, 600, 100, Color.Gold);
         }
 
-        else if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
+        else if (Raylib.GetMouseX() >= 1100 && Raylib.GetMouseX() <= 1300 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
         {
-        Raylib.DrawText("->", 400, 600, 100, Color.Gold);
+            Raylib.DrawText("->", 1050, 600, 100, Color.Gold);
+        }
+
+        if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            currentRoom = 3;
+            chosenCharacter = "ladyFighter";
+        }
+
+        else if (Raylib.GetMouseX() >= 800 && Raylib.GetMouseX() <= 1000 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            currentRoom = 3;
+            chosenCharacter = "monkFighter";
+        }
+
+        else if (Raylib.GetMouseX() >= 1100 && Raylib.GetMouseX() <= 1300 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            currentRoom = 3;
+            chosenCharacter = "plebFighter";
         }
 
     }
 
 
+    void animation(float timer, int frame, int maxFrames)
+    {
 
+        timer += Raylib.GetFrameTime();
+        if (timer >= 0.2f)
+        {
+            timer = 0.0f;
+            frame += 1;
+        }
+
+        frame = frame % maxFrames;
+    }
 
     Raylib.EndDrawing();
 }
