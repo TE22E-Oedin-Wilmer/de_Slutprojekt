@@ -92,25 +92,24 @@ while (!Raylib.WindowShouldClose())
 
     if (currentRoom == 1)
     {
-        // timerL += Raylib.GetFrameTime();
-        // if (timerL >= 0.2f)
-        // {
-        //     timerL = 0.0f;
-        //     frameL += 1;
-        // }
+        timerL += Raylib.GetFrameTime();
+        if (timerL >= 0.2f)
+        {
+            timerL = 0.0f;
+            frameL += 1;
+        }
 
-        // frameL = frameL % maxFramesL;
+        frameL = frameL % maxFramesL;
 
-        animation(timerL, frameL, maxFramesL);
 
-            timerM += Raylib.GetFrameTime();
-            if (timerM >= 0.2f)
-            {
-                timerM = 0.0f;
-                frameM += 1;
-            }
+        timerM += Raylib.GetFrameTime();
+        if (timerM >= 0.2f)
+        {
+            timerM = 0.0f;
+            frameM += 1;
+        }
 
-            frameM = frameM % maxFramesM;
+        frameM = frameM % maxFramesM;
 
 
         timerP += Raylib.GetFrameTime();
@@ -145,7 +144,7 @@ while (!Raylib.WindowShouldClose())
 
     }
 
-    if (currentRoom == 1)  //  ROOM 1*******************************************************************************************************
+    else if (currentRoom == 1)  //  ROOM 1*******************************************************************************************************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
 
@@ -185,37 +184,45 @@ while (!Raylib.WindowShouldClose())
 
         if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
         {
-            currentRoom = 3;
+            currentRoom = 2;
             chosenCharacter = "ladyFighter";
         }
 
         else if (Raylib.GetMouseX() >= 800 && Raylib.GetMouseX() <= 1000 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
         {
-            currentRoom = 3;
+            currentRoom = 2;
             chosenCharacter = "monkFighter";
         }
 
         else if (Raylib.GetMouseX() >= 1100 && Raylib.GetMouseX() <= 1300 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
         {
-            currentRoom = 3;
+            currentRoom = 2;
             chosenCharacter = "plebFighter";
         }
 
     }
 
-
-    void animation(float timer, int frame, int maxFrames)
+    else if (currentRoom == 2)
     {
 
-        timer += Raylib.GetFrameTime();
-        if (timer >= 0.2f)
+        if (chosenCharacter == "ladyFighter")
         {
-            timer = 0.0f;
-            frame += 1;
+
+            
+        }
+        else if (chosenCharacter == "monkFighter")
+        {
+
+        }
+        else if (chosenCharacter == "plebFighter")
+        {
+
         }
 
-        frame = frame % maxFrames;
     }
+
+
+    
 
     Raylib.EndDrawing();
 }
