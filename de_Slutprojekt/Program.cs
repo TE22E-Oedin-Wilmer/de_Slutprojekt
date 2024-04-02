@@ -1,5 +1,6 @@
 ﻿using Raylib_cs;
 using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 
 
 int display = Raylib.GetCurrentMonitor();    //get monitor display
@@ -55,6 +56,8 @@ float frameWidthP = (float)(plebFighterIdle.Width / numFramesP);
 float timerP = 0.0f;
 int frameP = 0;
 int maxFramesP = (int)(plebFighterIdle.Width / (int)frameWidthP);
+
+
 
 string chosenCharacter = "none";
 
@@ -121,6 +124,24 @@ while (!Raylib.WindowShouldClose())
 
         frameP = frameP % maxFramesP;
 
+        if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            currentRoom = 2;
+            chosenCharacter = "ladyFighter";
+        }
+
+        else if (Raylib.GetMouseX() >= 800 && Raylib.GetMouseX() <= 1000 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            currentRoom = 2;
+            chosenCharacter = "monkFighter";
+        }
+
+        else if (Raylib.GetMouseX() >= 1100 && Raylib.GetMouseX() <= 1300 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
+        {
+            currentRoom = 2;
+            chosenCharacter = "plebFighter";
+        }
+
     }
 
     Raylib.BeginDrawing();
@@ -182,38 +203,32 @@ while (!Raylib.WindowShouldClose())
             Raylib.DrawText("->", 1050, 600, 100, Color.Gold);
         }
 
-        if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
-        {
-            currentRoom = 2;
-            chosenCharacter = "ladyFighter";
-        }
 
-        else if (Raylib.GetMouseX() >= 800 && Raylib.GetMouseX() <= 1000 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
-        {
-            currentRoom = 2;
-            chosenCharacter = "monkFighter";
-        }
-
-        else if (Raylib.GetMouseX() >= 1100 && Raylib.GetMouseX() <= 1300 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
-        {
-            currentRoom = 2;
-            chosenCharacter = "plebFighter";
-        }
 
     }
 
     else if (currentRoom == 2)
     {
+        Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
 
         if (chosenCharacter == "ladyFighter")
         {
-
-            
+            timerLW += Raylib.GetFrameTime();
+        if (timerLW >= 0.2f)
+        {
+            timerLW = 0.0f;
+            frameLW += 1;
         }
+
+        frameLW = frameLW % maxFramesLW;
+
+        }
+
         else if (chosenCharacter == "monkFighter")
         {
 
         }
+
         else if (chosenCharacter == "plebFighter")
         {
 
@@ -222,7 +237,7 @@ while (!Raylib.WindowShouldClose())
     }
 
 
-    
+
 
     Raylib.EndDrawing();
 }
