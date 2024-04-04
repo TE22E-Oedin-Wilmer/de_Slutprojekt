@@ -1,9 +1,11 @@
 ﻿using Raylib_cs;
+using System;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 
 
-int display = Raylib.GetCurrentMonitor();    //get monitor display
+// LadyF ladyFighter = new LadyF();
+
 
 const int screenWidth = 800;                 //original window size
 const int screenHeight = 450;                //original window size
@@ -18,6 +20,8 @@ Texture2D pixelDojo = Raylib.LoadTexture("PixelDojo.png");
 Texture2D ladyFighterEat = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Eating.png");
 
 Texture2D ladyFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Idle.png");
+
+Texture2D ladyFighterWalk = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Walk.png");
 
 Texture2D monkFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Idle.png");
 
@@ -38,12 +42,19 @@ monkFighterIdle.Height = 672;
 plebFighterIdle.Width = 4608;
 plebFighterIdle.Height = 768;
 
+string ladyCondition = "idle";
 
 int numFramesL = 9;
 float frameWidthL = (float)(ladyFighterEat.Width / numFramesL);
 float timerL = 0.0f;
 int frameL = 0;
 int maxFramesL = (int)(ladyFighterEat.Width / (int)frameWidthL);
+
+int numFramesLW = 9;
+float frameWidthLW = (float)(ladyFighterWalk.Width / numFramesLW);
+float timerLW = 0.0f;
+int frameLW = 0;
+int maxFramesLW = (int)(ladyFighterWalk.Width / (int)frameWidthLW);
 
 int numFramesM = 7;
 float frameWidthM = (float)(monkFighterIdle.Width / numFramesM);
@@ -57,7 +68,8 @@ float timerP = 0.0f;
 int frameP = 0;
 int maxFramesP = (int)(plebFighterIdle.Width / (int)frameWidthP);
 
-
+int ladyX = 100;
+int ladyY = 100;
 
 string chosenCharacter = "none";
 
@@ -93,7 +105,7 @@ while (!Raylib.WindowShouldClose())
         }
     }
 
-    if (currentRoom == 1)
+    else if (currentRoom == 1)
     {
         timerL += Raylib.GetFrameTime();
         if (timerL >= 0.2f)
@@ -140,6 +152,45 @@ while (!Raylib.WindowShouldClose())
         {
             currentRoom = 2;
             chosenCharacter = "plebFighter";
+        }
+
+
+       else if (currentRoom == 2)
+        {
+
+            timerL += Raylib.GetFrameTime();
+            if (timerL >= 0.2f)
+            {
+                timerL = 0.0f;
+                frameL += 1;
+            }
+
+            frameL = frameL % maxFramesL;
+
+            timerLW += Raylib.GetFrameTime();
+            if (timerLW >= 0.2f)
+            {
+                timerLW = 0.0f;
+                frameLW += 1;
+            }
+
+            frameLW = frameLW % maxFramesLW;
+
+            if (chosenCharacter == "ladyFighter")
+            {
+
+                if (Raylib.IsKeyDown(KeyboardKey.D))
+                {
+                    ladyCondition = "walk";
+                    ladyX++;
+                }
+
+
+            }
+
+
+
+
         }
 
     }
@@ -213,14 +264,23 @@ while (!Raylib.WindowShouldClose())
 
         if (chosenCharacter == "ladyFighter")
         {
-            timerLW += Raylib.GetFrameTime();
-        if (timerLW >= 0.2f)
-        {
-            timerLW = 0.0f;
-            frameLW += 1;
-        }
+            if (ladyCondition == "idle")
+            {
+                Raylib.DrawTextureRec(
+                                ladyFighterEat,
+                                new Rectangle((frameWidthL * frameL), 0, frameWidthL, (float)ladyFighterEat.Height),
+                                new Vector2(100, 50),
+                                Color.White);
+            }
 
-        frameLW = frameLW % maxFramesLW;
+            else if (ladyCondition == "walk")
+            {
+                Raylib.DrawTextureRec(
+                                ladyFighterWalk,
+                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyFighterWalk.Height),
+                                new Vector2(ladyX, ladyY),
+                                Color.White);
+            }
 
         }
 
