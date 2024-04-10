@@ -57,12 +57,19 @@ Texture2D monkFighterAttack2 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documen
 // ************** PLEB     BELOW *******************
 
 
+Texture2D plebFighterIdle1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Idle.png");
+
 Texture2D plebFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Idle.png");
 
 Texture2D plebFighterWalk = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Walk.png");
 
+Texture2D plebFighterRun = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Run.png");
 
+Texture2D plebFighterJump = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Jump.png");
 
+Texture2D plebFighterAttack1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Attack_1.png");
+
+Texture2D plebFighterAttack2 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Attack_2.png");
 
 
 
@@ -127,11 +134,31 @@ monkFighterAttack2.Height = 480;
 
 
 
-plebFighterIdle.Width = 4608;
-plebFighterIdle.Height = 768;
+plebFighterIdle1.Width = 4608;
+plebFighterIdle1.Height = 768;
 
-plebFighterWalk.Width = 5120;
-plebFighterWalk.Height = 640;
+plebFighterIdle.Width = 2880;
+plebFighterIdle.Height = 480;
+
+plebFighterWalk.Width = 3840;
+plebFighterWalk.Height = 480;
+
+plebFighterRun.Width = 2880;
+plebFighterRun.Height = 480;
+
+plebFighterJump.Width = 3840;
+plebFighterJump.Height = 480;
+
+plebFighterAttack1.Width = 2880;
+plebFighterAttack1.Height = 480;
+
+plebFighterAttack2.Width = 1920;
+plebFighterAttack2.Height = 480;
+
+
+
+//*******CONDITIONS/STATES BELOW**************
+
 
 string ladyCondition = "idle";
 
@@ -243,22 +270,55 @@ int maxFramesMA1 = (int)(monkFighterAttack1.Width / (int)frameWidthMA1);
 
 
 int numFramesP = 6;
-float frameWidthP = (float)(plebFighterIdle.Width / numFramesP);
+float frameWidthP = (float)(plebFighterIdle1.Width / numFramesP);
 float timerP = 0.0f;
 int frameP = 0;
-int maxFramesP = (int)(plebFighterIdle.Width / (int)frameWidthP);
+int maxFramesP = (int)(plebFighterIdle1.Width / (int)frameWidthP);
+
+int numFramesPI = 6;
+float frameWidthPI = (float)(plebFighterIdle.Width / numFramesPI);
+float timerPI = 0.0f;
+int framePI = 0;
+int maxFramesPI = (int)(plebFighterIdle.Width / (int)frameWidthPI);
 
 int numFramesPW = 8;
-float frameWidthPW = (float)(plebFighterIdle.Width / numFramesPW);
+float frameWidthPW = (float)(plebFighterWalk.Width / numFramesPW);
 float timerPW = 0.0f;
 int framePW = 0;
-int maxFramesPW = (int)(plebFighterIdle.Width / (int)frameWidthPW);
+int maxFramesPW = (int)(plebFighterWalk.Width / (int)frameWidthPW);
 
 int numFramesPB = 8;
-float frameWidthPB = (float)(plebFighterIdle.Width / numFramesPB);
+float frameWidthPB = (float)(plebFighterWalk.Width / numFramesPB);
 float timerPB = 0.0f;
 int framePB = 0;
-int maxFramesPB = (int)(plebFighterIdle.Width / (int)frameWidthPB);
+int maxFramesPB = (int)(plebFighterWalk.Width / (int)frameWidthPB);
+
+int numFramesPR = 6;
+float frameWidthPR = (float)(plebFighterRun.Width / numFramesPR);
+float timerPR = 0.0f;
+int framePR = 0;
+int maxFramesPR = (int)(plebFighterRun.Width / (int)frameWidthPR);
+
+int numFramesPJ = 8;
+float frameWidthPJ = (float)(plebFighterJump.Width / numFramesPJ);
+float timerPJ = 0.0f;
+int framePJ = 0;
+int maxFramesPJ = (int)(plebFighterJump.Width / (int)frameWidthPJ);
+
+int numFramesPA1 = 6;
+float frameWidthPA1 = (float)(plebFighterAttack1.Width / numFramesPA1);
+float timerPA1 = 0.0f;
+int framePA1 = 0;
+int maxFramesPA1 = (int)(plebFighterAttack1.Width / (int)frameWidthPA1);
+
+int numFramesPA2 = 4;
+float frameWidthPA2 = (float)(plebFighterAttack2.Width / numFramesPA2);
+float timerPA2 = 0.0f;
+int framePA2 = 0;
+int maxFramesPA2 = (int)(plebFighterAttack2.Width / (int)frameWidthPA2);
+
+
+
 
 int ladyX = 100;
 int ladyY = 330;
@@ -267,7 +327,7 @@ int monkX = 100;
 int monkY = 500;
 
 int plebX = 100;
-int plebY = 330;
+int plebY = 500;
 
 string chosenCharacter = "none";
 
@@ -276,6 +336,15 @@ Boolean attack1 = false;
 Boolean attack2 = false;
 
 Boolean jump = false;
+
+int frameWidth = 0;
+
+Rectangle HitboxL = new Rectangle(ladyX, ladyY, frameWidth, 100);
+
+Rectangle HitboxM = new Rectangle(monkX, monkY, frameWidth, 100);
+
+Rectangle HitboxP = new Rectangle(plebX, plebY, frameWidth, 100);
+
 
 int currentRoom = 0;
 
@@ -687,6 +756,165 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
         else if (chosenCharacter == "plebFighter")  //******PLEBFIGHTER**************************************************************
         {
+            timerPI += Raylib.GetFrameTime();
+            if (timerPI >= 0.2f)
+            {
+                timerPI = 0.0f;
+                framePI += 1;
+            }
+
+            framePI = framePI % maxFramesPI;
+
+            timerPW += Raylib.GetFrameTime();
+            if (timerPW >= 0.2f)
+            {
+                timerPW = 0.0f;
+                framePW += 1;
+            }
+
+            framePW = framePW % maxFramesPW;
+
+            timerPB -= Raylib.GetFrameTime();
+            if (timerPB <= 0.0f)
+            {
+                timerPB = 0.2f;
+                framePB -= 1;
+            }
+
+            framePB = framePB % maxFramesPB;
+
+            timerPR += Raylib.GetFrameTime();
+            if (timerPR >= 0.2f)
+            {
+                timerPR = 0.0f;
+                framePR += 1;
+            }
+
+            framePR = framePR % maxFramesPR;
+
+            if (Raylib.IsKeyDown(KeyboardKey.D))
+            {
+                plebCondition = "walk";
+                plebX += 2;
+            }
+
+            else if (Raylib.IsKeyDown(KeyboardKey.A))
+            {
+
+                plebCondition = "back";
+                plebX -= 2;
+            }
+
+            if (Raylib.IsKeyDown(KeyboardKey.LeftShift) && Raylib.IsKeyDown(KeyboardKey.D))
+            {
+                plebCondition = "run";
+                plebX += 4;
+            }
+
+            if (Raylib.IsKeyPressed(KeyboardKey.Space))
+            {
+                jump = true;
+            }
+
+            if (jump == true)
+            {
+                plebCondition = "jump";
+
+                timerPJ += Raylib.GetFrameTime();
+                if (timerPJ >= 0.2f)
+                {
+                    timerPJ = 0.0f;
+                    framePJ += 1;
+                }
+
+
+
+                framePJ = framePJ % maxFramesPJ;
+
+                if (framePJ > 1 && framePJ < 3)
+                {
+
+                    plebY -= 1;
+                }
+
+                else if (framePJ == 4)
+                {
+                    plebY -= 0;
+                    plebY += 0;
+                }
+
+                else if (framePJ > 4)
+                {
+                    plebY += 1;
+                }
+
+                if (framePJ == 7)
+                {
+                    jump = false;
+                    plebCondition = "idle";
+                    plebY = 500;
+                    framePJ = 0;
+                }
+            }
+
+            else if (Raylib.IsKeyUp(KeyboardKey.A) && Raylib.IsKeyUp(KeyboardKey.D))
+            {
+                plebCondition = "idle";
+            }
+
+            if (Raylib.IsKeyPressed(KeyboardKey.F))
+            {
+                attack1 = true;
+            }
+
+            if (attack1 == true)
+            {
+                plebCondition = "attack1";
+
+                timerPA1 += Raylib.GetFrameTime();
+                if (timerPA1 >= 0.2f)
+                {
+                    timerPA1 = 0.0f;
+                    framePA1 += 1;
+                }
+
+                framePA1 = framePA1 % maxFramesPA1;
+
+                if (framePA1 == 5)
+                {
+                    attack1 = false;
+                    plebCondition = "idle";
+                    framePA1 = 0;
+                }
+            }
+
+            if (Raylib.IsKeyPressed(KeyboardKey.E))
+            {
+                attack2 = true;
+            }
+
+            if (attack2 == true)
+            {
+                plebCondition = "attack2";
+
+                timerPA2 += Raylib.GetFrameTime();
+                if (timerPA2 >= 0.2f)
+                {
+                    timerPA2 = 0.0f;
+                    framePA2 += 1;
+                }
+
+                framePA2 = framePA2 % maxFramesPA2;
+
+                if (framePA2 == 3)
+                {
+                    attack2 = false;
+                    plebCondition = "idle";
+                    framePA2 = 0;
+                }
+            }
+
+
 
         }
 
@@ -733,8 +961,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
                 Color.White);
 
         Raylib.DrawTextureRec(
-                plebFighterIdle,
-                new Rectangle((frameWidthP * frameP), 0, frameWidthP, (float)plebFighterIdle.Height),
+                plebFighterIdle1,
+                new Rectangle((frameWidthP * frameP), 0, frameWidthP, (float)plebFighterIdle1.Height),
                 new Vector2(900, 350),
                 Color.White);
 
@@ -757,11 +985,11 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
     }
 
-    else if (currentRoom == 2)
+    else if (currentRoom == 2)  //************** ROOM 2 ***************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
 
-        if (chosenCharacter == "ladyFighter")
+        if (chosenCharacter == "ladyFighter")     //******* LADY BELOW******************************
         {
             if (ladyCondition == "idle")
             {
@@ -828,7 +1056,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
         }
 
-        else if (chosenCharacter == "monkFighter")
+        else if (chosenCharacter == "monkFighter")    //************** MONK BELOW ****************************
         {
 
             if (monkCondition == "idle")
@@ -896,8 +1124,71 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
         }
 
-        else if (chosenCharacter == "plebFighter")
+        else if (chosenCharacter == "plebFighter")    // ******************** PLEB BELOW ***************************
         {
+
+            if (plebCondition == "idle")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterIdle,
+                                new Rectangle((frameWidthPI * framePI), 0, frameWidthPI, (float)plebFighterIdle.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
+
+            else if (plebCondition == "walk")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterWalk,
+                                new Rectangle((frameWidthPW * framePW), 0, frameWidthPW, (float)plebFighterWalk.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
+
+            else if (plebCondition == "back")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterWalk,
+                                new Rectangle((frameWidthPB * framePB), 0, frameWidthPB, (float)plebFighterWalk.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
+
+            else if (plebCondition == "run")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterRun,
+                                new Rectangle((frameWidthPR * framePR), 0, frameWidthPR, (float)plebFighterRun.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
+
+            else if (plebCondition == "jump")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterJump,
+                                new Rectangle((frameWidthPJ * framePJ), 0, frameWidthPJ, (float)plebFighterJump.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
+
+            else if (plebCondition == "attack1")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterAttack1,
+                                new Rectangle((frameWidthPA1 * framePA1), 0, frameWidthPA1, (float)plebFighterAttack1.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
+
+            else if (plebCondition == "attack2")
+            {
+                Raylib.DrawTextureRec(
+                                plebFighterAttack2,
+                                new Rectangle((frameWidthPA2 * framePA2), 0, frameWidthPA2, (float)plebFighterAttack2.Height),
+                                new Vector2(plebX, plebY),
+                                Color.White);
+            }
 
         }
 
