@@ -339,11 +339,11 @@ Boolean jump = false;
 
 int frameWidth = 0;
 
-Rectangle HitboxL = new Rectangle(ladyX, ladyY, frameWidth, 100);
+Rectangle HitboxL = new Rectangle(ladyX, ladyY, frameWidth, 640);
 
-Rectangle HitboxM = new Rectangle(monkX, monkY, frameWidth, 100);
+Rectangle HitboxM = new Rectangle(monkX, monkY, frameWidth, 480);
 
-Rectangle HitboxP = new Rectangle(plebX, plebY, frameWidth, 100);
+Rectangle HitboxP = new Rectangle(plebX, plebY, frameWidth, 480);
 
 
 int currentRoom = 0;
@@ -380,34 +380,41 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
     else if (currentRoom == 1)
     {
-        timerL += Raylib.GetFrameTime();
-        if (timerL >= 0.2f)
+        for (int i = 0; i < 1.2; i++)
         {
-            timerL = 0.0f;
-            frameL += 1;
+            timerL += Raylib.GetFrameTime();
+            if (timerL >= 0.2f)
+            {
+                timerL = 0.0f;
+                frameL += 1;
+            }
+
+            frameL = frameL % maxFramesL;
         }
 
-        frameL = frameL % maxFramesL;
-
-
-        timerM1 += Raylib.GetFrameTime();
-        if (timerM1 >= 0.2f)
+        for (int i = 0; i < 1.2; i++)
         {
-            timerM1 = 0.0f;
-            frameM1 += 1;
+            timerM1 += Raylib.GetFrameTime();
+            if (timerM1 >= 0.2f)
+            {
+                timerM1 = 0.0f;
+                frameM1 += 1;
+            }
+
+            frameM1 = frameM1 % maxFramesM1;
         }
 
-        frameM1 = frameM1 % maxFramesM1;
-
-
-        timerP += Raylib.GetFrameTime();
-        if (timerP >= 0.2f)
+        for (int i = 0; i < 1.2; i++)
         {
-            timerP = 0.0f;
-            frameP += 1;
-        }
+            timerP += Raylib.GetFrameTime();
+            if (timerP >= 0.2f)
+            {
+                timerP = 0.0f;
+                frameP += 1;
+            }
 
-        frameP = frameP % maxFramesP;
+            frameP = frameP % maxFramesP;
+        }
 
         if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074 && Raylib.IsMouseButtonPressed(MouseButton.Left))
         {
@@ -993,6 +1000,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
         {
             if (ladyCondition == "idle")
             {
+                frameWidth = (int)frameWidthLI;
                 Raylib.DrawTextureRec(
                                 ladyFighterIdle,
                                 new Rectangle((frameWidthLI * frameLI), 0, frameWidthLI, (float)ladyFighterIdle.Height),
@@ -1002,6 +1010,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (ladyCondition == "walk")
             {
+                frameWidth = (int)frameWidthLW;
                 Raylib.DrawTextureRec(
                                 ladyFighterWalk,
                                 new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyFighterWalk.Height),
@@ -1011,6 +1020,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (ladyCondition == "back")
             {
+                frameWidth = (int)frameWidthLB;
                 Raylib.DrawTextureRec(
                                 ladyFighterWalk,
                                 new Rectangle((frameWidthLB * frameLB), 0, frameWidthLB, (float)ladyFighterWalk.Height),
@@ -1020,6 +1030,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (ladyCondition == "run")
             {
+                frameWidth = (int)frameWidthLW;
                 Raylib.DrawTextureRec(
                                 ladyFighterRun,
                                 new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyFighterRun.Height),
@@ -1029,6 +1040,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (ladyCondition == "jump")
             {
+                frameWidth = (int)frameWidthLJ;
                 Raylib.DrawTextureRec(
                                 ladyFighterJump,
                                 new Rectangle((frameWidthLJ * frameLJ), 0, frameWidthLJ, (float)ladyFighterJump.Height),
@@ -1038,6 +1050,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (ladyCondition == "attack1")
             {
+                frameWidth = (int)frameWidthLA1;
                 Raylib.DrawTextureRec(
                                 ladyFighterAttack1,
                                 new Rectangle((frameWidthLA1 * frameLA1) + 20, 0, frameWidthLA1, (float)ladyFighterAttack1.Height),
@@ -1047,6 +1060,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (ladyCondition == "attack2")
             {
+                frameWidth = (int)frameWidthLA2;
                 Raylib.DrawTextureRec(
                                 ladyFighterAttack2,
                                 new Rectangle((frameWidthLA2 * frameLA2) + 20, 0, frameWidthLA2, (float)ladyFighterAttack2.Height),
@@ -1061,6 +1075,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             if (monkCondition == "idle")
             {
+                frameWidth = (int)frameWidthM;
                 Raylib.DrawTextureRec(
                                 monkFighterIdle,
                                 new Rectangle((frameWidthM * frameM), 0, frameWidthM, (float)monkFighterIdle.Height),
@@ -1070,6 +1085,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (monkCondition == "walk")
             {
+                frameWidth = (int)frameWidthMW;
                 Raylib.DrawTextureRec(
                                 monkFighterWalk,
                                 new Rectangle((frameWidthMW * frameMW), 0, frameWidthMW, (float)monkFighterWalk.Height),
@@ -1079,6 +1095,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (monkCondition == "back")
             {
+                frameWidth = (int)frameWidthMB;
                 Raylib.DrawTextureRec(
                                 monkFighterWalk,
                                 new Rectangle((frameWidthMB * frameMB), 0, frameWidthMB, (float)monkFighterWalk.Height),
@@ -1088,6 +1105,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (monkCondition == "run")
             {
+                frameWidth = (int)frameWidthMR;
                 Raylib.DrawTextureRec(
                                 monkFighterRun,
                                 new Rectangle((frameWidthMR * frameMR), 0, frameWidthMR, (float)monkFighterRun.Height),
@@ -1097,6 +1115,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (monkCondition == "jump")
             {
+                frameWidth = (int)frameWidthMJ;
                 Raylib.DrawTextureRec(
                                 monkFighterJump,
                                 new Rectangle((frameWidthMJ * frameMJ), 0, frameWidthMJ, (float)monkFighterJump.Height),
@@ -1106,6 +1125,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (monkCondition == "attack1")
             {
+                frameWidth = (int)frameWidthMA1;
                 Raylib.DrawTextureRec(
                                 monkFighterAttack1,
                                 new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkFighterAttack1.Height),
@@ -1115,6 +1135,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (monkCondition == "attack2")
             {
+                frameWidth = (int)frameWidthMA1;
                 Raylib.DrawTextureRec(
                                 monkFighterAttack2,
                                 new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkFighterAttack2.Height),
@@ -1129,6 +1150,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             if (plebCondition == "idle")
             {
+                frameWidth = (int)frameWidthPI;
                 Raylib.DrawTextureRec(
                                 plebFighterIdle,
                                 new Rectangle((frameWidthPI * framePI), 0, frameWidthPI, (float)plebFighterIdle.Height),
@@ -1138,6 +1160,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (plebCondition == "walk")
             {
+                frameWidth = (int)frameWidthPW;
                 Raylib.DrawTextureRec(
                                 plebFighterWalk,
                                 new Rectangle((frameWidthPW * framePW), 0, frameWidthPW, (float)plebFighterWalk.Height),
@@ -1147,6 +1170,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (plebCondition == "back")
             {
+                frameWidth = (int)frameWidthPB;
                 Raylib.DrawTextureRec(
                                 plebFighterWalk,
                                 new Rectangle((frameWidthPB * framePB), 0, frameWidthPB, (float)plebFighterWalk.Height),
@@ -1156,6 +1180,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (plebCondition == "run")
             {
+                frameWidth = (int)frameWidthPR;
                 Raylib.DrawTextureRec(
                                 plebFighterRun,
                                 new Rectangle((frameWidthPR * framePR), 0, frameWidthPR, (float)plebFighterRun.Height),
@@ -1165,6 +1190,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (plebCondition == "jump")
             {
+                frameWidth = (int)frameWidthPJ;
                 Raylib.DrawTextureRec(
                                 plebFighterJump,
                                 new Rectangle((frameWidthPJ * framePJ), 0, frameWidthPJ, (float)plebFighterJump.Height),
@@ -1174,6 +1200,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (plebCondition == "attack1")
             {
+                frameWidth = (int)frameWidthPA1;
                 Raylib.DrawTextureRec(
                                 plebFighterAttack1,
                                 new Rectangle((frameWidthPA1 * framePA1), 0, frameWidthPA1, (float)plebFighterAttack1.Height),
@@ -1183,6 +1210,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             else if (plebCondition == "attack2")
             {
+                frameWidth = (int)frameWidthPA2;
                 Raylib.DrawTextureRec(
                                 plebFighterAttack2,
                                 new Rectangle((frameWidthPA2 * framePA2), 0, frameWidthPA2, (float)plebFighterAttack2.Height),
@@ -1193,9 +1221,6 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
         }
 
     }
-
-
-
 
     Raylib.EndDrawing();
 }
