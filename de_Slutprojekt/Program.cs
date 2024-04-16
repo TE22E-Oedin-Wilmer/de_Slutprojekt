@@ -998,6 +998,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
         if (chosenCharacter == "ladyFighter")     //******* LADY BELOW******************************
         {
+
             if (ladyCondition == "idle")
             {
                 frameWidth = (int)frameWidthLI;
@@ -1221,6 +1222,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
         }
 
     }
+
+    
 
     Raylib.EndDrawing();
 }

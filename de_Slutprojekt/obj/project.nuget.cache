@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WmjuXwmqiIZLRNwY+0KSKRAe6a8w1Cn8EKjybn826aYzyDPXJoygrVZaruSjAkGjE6Ey5T/bacSb7dOUOcVb6Q==",
+  "dgSpecHash": "+W6Ze6zWDuNqynAAIn1u9/73Vp6ViVosErpYA2h5OGaPIeDgb/HoUyntbinJhVWm8Ego6KcLKGP1Dr3dL6fIyQ==",
   "success": true,
-  "projectFilePath": "c:\\Users\\wilmer.odin\\Documents\\ProgrammeringKurs\\de_Slutprojekt\\de_Slutprojekt\\de_Slutprojekt.csproj",
+  "projectFilePath": "C:\\Users\\wilmer.odin\\Documents\\ProgrammeringKurs\\de_Slutprojekt\\de_Slutprojekt\\de_Slutprojekt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\wilmer.odin\\.nuget\\packages\\raylib-cs\\6.0.0\\raylib-cs.6.0.0.nupkg.sha512",
     "C:\\Users\\wilmer.odin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
