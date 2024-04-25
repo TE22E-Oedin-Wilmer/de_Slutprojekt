@@ -2,6 +2,7 @@
 using System;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
+using System.Transactions;
 
 
 // LadyF ladyFighter = new LadyF();
@@ -20,19 +21,33 @@ Texture2D pixelDojo = Raylib.LoadTexture("PixelDojo.png");
 
 // ************** LADY     BELOW *******************
 
-Texture2D ladyFighterEat = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Eating.png");
+Dictionary<string, Texture2D> ladyTextures = new();
 
-Texture2D ladyFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Idle.png");
+ladyTextures.Add("idle", Raylib.LoadTexture(@"Kunoichi\Idle.png"));
 
-Texture2D ladyFighterWalk = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Walk.png");
+ladyTextures.Add("walk", Raylib.LoadTexture(@"Kunoichi\Walk.png"));
 
-Texture2D ladyFighterRun = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Run.png");
+ladyTextures.Add("run", Raylib.LoadTexture(@"Kunoichi\Run.png"));
 
-Texture2D ladyFighterJump = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Jump.png");
+ladyTextures.Add("jump", Raylib.LoadTexture(@"Kunoichi\Jump.png"));
 
-Texture2D ladyFighterAttack1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Attack_1.png");
+ladyTextures.Add("attack1", Raylib.LoadTexture(@"Kunoichi\Attack_1.png"));
 
-Texture2D ladyFighterAttack2 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Kunoichi\Attack_2.png");
+ladyTextures.Add("attack2", Raylib.LoadTexture(@"Kunoichi\Attack_2.png"));
+
+Texture2D ladyFighterEat = Raylib.LoadTexture(@"Kunoichi\Eating.png");
+
+Texture2D ladyFighterIdle = Raylib.LoadTexture(@"Kunoichi\Idle.png");
+
+Texture2D ladyFighterWalk = Raylib.LoadTexture(@"Kunoichi\Walk.png");
+
+Texture2D ladyFighterRun = Raylib.LoadTexture(@"Kunoichi\Run.png");
+
+Texture2D ladyFighterJump = Raylib.LoadTexture(@"Kunoichi\Jump.png");
+
+Texture2D ladyFighterAttack1 = Raylib.LoadTexture(@"Kunoichi\Attack_1.png");
+
+Texture2D ladyFighterAttack2 = Raylib.LoadTexture(@"Kunoichi\Attack_2.png");
 
 
 
@@ -40,36 +55,36 @@ Texture2D ladyFighterAttack2 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documen
 
 
 
-Texture2D monkFighterIdle1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Idle.png");
+Texture2D monkFighterIdle1 = Raylib.LoadTexture(@"Ninja_Monk\Idle.png");
 
-Texture2D monkFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Idle.png");
+Texture2D monkFighterIdle = Raylib.LoadTexture(@"Ninja_Monk\Idle.png");
 
-Texture2D monkFighterWalk = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Walk.png");
+Texture2D monkFighterWalk = Raylib.LoadTexture(@"Ninja_Monk\Walk.png");
 
-Texture2D monkFighterRun = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Run.png");
+Texture2D monkFighterRun = Raylib.LoadTexture(@"Ninja_Monk\Run.png");
 
-Texture2D monkFighterJump = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Jump.png");
+Texture2D monkFighterJump = Raylib.LoadTexture(@"Ninja_Monk\Jump.png");
 
-Texture2D monkFighterAttack1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Attack_1.png");
+Texture2D monkFighterAttack1 = Raylib.LoadTexture(@"Ninja_Monk\Attack_1.png");
 
-Texture2D monkFighterAttack2 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Monk\Attack_2.png");
+Texture2D monkFighterAttack2 = Raylib.LoadTexture(@"Ninja_Monk\Attack_2.png");
 
 // ************** PLEB     BELOW *******************
 
 
-Texture2D plebFighterIdle1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Idle.png");
+Texture2D plebFighterIdle1 = Raylib.LoadTexture(@"Ninja_Peasant\Idle.png");
 
-Texture2D plebFighterIdle = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Idle.png");
+Texture2D plebFighterIdle = Raylib.LoadTexture(@"Ninja_Peasant\Idle.png");
 
-Texture2D plebFighterWalk = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Walk.png");
+Texture2D plebFighterWalk = Raylib.LoadTexture(@"Ninja_Peasant\Walk.png");
 
-Texture2D plebFighterRun = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Run.png");
+Texture2D plebFighterRun = Raylib.LoadTexture(@"Ninja_Peasant\Run.png");
 
-Texture2D plebFighterJump = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Jump.png");
+Texture2D plebFighterJump = Raylib.LoadTexture(@"Ninja_Peasant\Jump.png");
 
-Texture2D plebFighterAttack1 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Attack_1.png");
+Texture2D plebFighterAttack1 = Raylib.LoadTexture(@"Ninja_Peasant\Attack_1.png");
 
-Texture2D plebFighterAttack2 = Raylib.LoadTexture(@"C:\Users\wilmer.odin\Documents\ProgrammeringKurs\de_Slutprojekt\de_Slutprojekt\Ninja_Peasant\Attack_2.png");
+Texture2D plebFighterAttack2 = Raylib.LoadTexture(@"Ninja_Peasant\Attack_2.png");
 
 
 
@@ -85,11 +100,35 @@ pixelDojo.Height = Raylib.GetMonitorHeight(monitordisplay);
 ladyFighterEat.Width = 9216;
 ladyFighterEat.Height = 1024;
 
-ladyFighterIdle.Width = 5760;
-ladyFighterIdle.Height = 640;
+Texture2D idleL = ladyTextures["idle"];
+idleL.Width = 5760;
+idleL.Height = 640;
+ladyTextures["idle"] = idleL;
 
-ladyFighterWalk.Width = 5120;
-ladyFighterWalk.Height = 640;
+Texture2D walkL = ladyTextures["walk"];
+walkL.Width = 5120;
+walkL.Height = 640;
+ladyTextures["walk"] = walkL;
+
+Texture2D runL = ladyTextures["run"];
+runL.Width = 5120;
+runL.Height = 640;
+ladyTextures["run"] = runL;
+
+Texture2D jumpL = ladyTextures["jump"];
+jumpL.Width = 6400;
+jumpL.Height = 640;
+ladyTextures["jump"] = jumpL;
+
+Texture2D attack1L = ladyTextures["attack1"];
+attack1L.Width = 3840;
+attack1L.Height = 640;
+ladyTextures["attack1"] = attack1L;
+
+Texture2D attack2L = ladyTextures["attack2"];
+attack2L.Width = 5120;
+attack2L.Height = 640;
+ladyTextures["attack2"] = attack2L;
 
 ladyFighterRun.Width = 5120;
 ladyFighterRun.Height = 640;
@@ -177,16 +216,16 @@ int frameL = 0;
 int maxFramesL = (int)(ladyFighterEat.Width / (int)frameWidthL);
 
 int numFramesLI = 9;
-float frameWidthLI = (float)(ladyFighterIdle.Width / numFramesLI);
+float frameWidthLI = (float)(ladyTextures["idle"].Width / numFramesLI);
 float timerLI = 0.0f;
 int frameLI = 0;
-int maxFramesLI = (int)(ladyFighterIdle.Width / (int)frameWidthLI);
+int maxFramesLI = (int)(ladyTextures["idle"].Width / (int)frameWidthLI);
 
 int numFramesLW = 8;
-float frameWidthLW = (float)(ladyFighterWalk.Width / numFramesLW);
+float frameWidthLW = (float)(ladyTextures["walk"].Width / numFramesLW);
 float timerLW = 0.0f;
 int frameLW = 0;
-int maxFramesLW = (int)(ladyFighterWalk.Width / (int)frameWidthLW);
+int maxFramesLW = (int)(ladyTextures["walk"].Width / (int)frameWidthLW);
 
 int numFramesLA1 = 6;
 float frameWidthLA1 = (float)(ladyFighterAttack1.Width / numFramesLA1);
@@ -201,10 +240,10 @@ int frameLA2 = 0;
 int maxFramesLA2 = (int)(ladyFighterAttack2.Width / (int)frameWidthLA2);
 
 int numFramesLB = 8;
-float frameWidthLB = (float)(ladyFighterWalk.Width / numFramesLB);
+float frameWidthLB = (float)(ladyTextures["walk"].Width / numFramesLB);
 float timerLB = 0.0f;
 int frameLB = 0;
-int maxFramesLB = (int)(ladyFighterWalk.Width / (int)frameWidthLB);
+int maxFramesLB = (int)(ladyTextures["walk"].Width / (int)frameWidthLB);
 
 int numFramesLJ = 10;
 float frameWidthLJ = (float)(ladyFighterJump.Width / numFramesLJ);
@@ -348,6 +387,8 @@ Rectangle HitboxP = new Rectangle(plebX, plebY, frameWidth, 480);
 
 int currentRoom = 0;
 
+string currentBackground = "dojo";
+
 while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__---__---__--__--
 {
 
@@ -437,7 +478,9 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
     }
     else if (currentRoom == 2)
     {
-
+        if (ladyX >= screenWidth || monkX >= screenWidth || plebX >= screenWidth){
+            currentBackground = "castle";
+        }
 
 
         if (chosenCharacter == "ladyFighter") //****LADYFIGHTER***************************************************************
@@ -1003,8 +1046,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLI;
                 Raylib.DrawTextureRec(
-                                ladyFighterIdle,
-                                new Rectangle((frameWidthLI * frameLI), 0, frameWidthLI, (float)ladyFighterIdle.Height),
+                                ladyTextures["idle"],
+                                new Rectangle((frameWidthLI * frameLI), 0, frameWidthLI, (float)ladyTextures["idle"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
@@ -1013,8 +1056,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLW;
                 Raylib.DrawTextureRec(
-                                ladyFighterWalk,
-                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyFighterWalk.Height),
+                                ladyTextures["walk"],
+                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyTextures["walk"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
@@ -1023,8 +1066,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLB;
                 Raylib.DrawTextureRec(
-                                ladyFighterWalk,
-                                new Rectangle((frameWidthLB * frameLB), 0, frameWidthLB, (float)ladyFighterWalk.Height),
+                                ladyTextures["walk"],
+                                new Rectangle((frameWidthLB * frameLB), 0, frameWidthLB, (float)ladyTextures["walk"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
