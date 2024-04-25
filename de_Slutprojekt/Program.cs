@@ -76,19 +76,6 @@ plebTextures.Add("attack2", Raylib.LoadTexture(@"Ninja_Peasant\Attack_2.png"));
 
 Texture2D plebFighterIdle1 = Raylib.LoadTexture(@"Ninja_Peasant\Idle.png");
 
-Texture2D plebFighterIdle = Raylib.LoadTexture(@"Ninja_Peasant\Idle.png");
-
-Texture2D plebFighterWalk = Raylib.LoadTexture(@"Ninja_Peasant\Walk.png");
-
-Texture2D plebFighterRun = Raylib.LoadTexture(@"Ninja_Peasant\Run.png");
-
-Texture2D plebFighterJump = Raylib.LoadTexture(@"Ninja_Peasant\Jump.png");
-
-Texture2D plebFighterAttack1 = Raylib.LoadTexture(@"Ninja_Peasant\Attack_1.png");
-
-Texture2D plebFighterAttack2 = Raylib.LoadTexture(@"Ninja_Peasant\Attack_2.png");
-
-
 
 
 //DOJO FIXES
@@ -209,24 +196,6 @@ Texture2D attack2P = plebTextures["attack2"];
 attack2P.Width = 1920;
 attack2P.Height = 480;
 plebTextures["attack2"] = attack2P;
-
-plebFighterIdle.Width = 2880;
-plebFighterIdle.Height = 480;
-
-plebFighterWalk.Width = 3840;
-plebFighterWalk.Height = 480;
-
-plebFighterRun.Width = 2880;
-plebFighterRun.Height = 480;
-
-plebFighterJump.Width = 3840;
-plebFighterJump.Height = 480;
-
-plebFighterAttack1.Width = 2880;
-plebFighterAttack1.Height = 480;
-
-plebFighterAttack2.Width = 1920;
-plebFighterAttack2.Height = 480;
 
 
 
@@ -512,7 +481,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
     }
     else if (currentRoom == 2)
     {
-        if (ladyX >= screenWidth || monkX >= screenWidth || plebX >= screenWidth){
+        if (ladyX >= screenWidth || monkX >= screenWidth || plebX >= screenWidth)
+        {
             currentBackground = "castle";
         }
 
@@ -1004,6 +974,15 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
     }
 
+    void animation(float frameWidthHere, int frame, int x, int y, Texture2D texture)
+    {
+        frameWidth = (int)frameWidthHere;
+        Raylib.DrawTextureRec(
+                        texture,
+                        new Rectangle((frameWidthHere * frame), 0, frameWidthHere, (float)texture.Height),
+                        new Vector2(x, y),
+                        Color.White);
+    }
 
 
     Raylib.BeginDrawing();
@@ -1032,23 +1011,13 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
 
         Raylib.DrawText("Choose your character", screenWidth / 2, screenHeight / 4, 100, Color.RayWhite);
-        Raylib.DrawTextureRec(
-                ladyFighterEat,
-                new Rectangle((frameWidthL * frameL), 0, frameWidthL, (float)ladyFighterEat.Height),
-                new Vector2(100, 50),
-                Color.White);
 
-        Raylib.DrawTextureRec(
-                monkFighterIdle1,
-                new Rectangle((frameWidthM1 * frameM1), 0, frameWidthM1, (float)monkFighterIdle1.Height),
-                new Vector2(600, 400),
-                Color.White);
+        animation(frameWidthL, frameL, 100, 50, ladyFighterEat);
 
-        Raylib.DrawTextureRec(
-                plebFighterIdle1,
-                new Rectangle((frameWidthP * frameP), 0, frameWidthP, plebFighterIdle1.Height),
-                new Vector2(900, 350),
-                Color.White);
+        animation(frameWidthM1, frameM1, 600, 400, monkFighterIdle1);
+
+        animation(frameWidthP, frameP, 900, 350, plebFighterIdle1);
+
 
         if (Raylib.GetMouseX() >= 500 && Raylib.GetMouseX() <= 700 && Raylib.GetMouseY() >= 500 && Raylib.GetMouseY() <= 1074)
         {
@@ -1078,52 +1047,27 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             if (ladyCondition == "idle")
             {
-                frameWidth = (int)frameWidthLI;
-                Raylib.DrawTextureRec(
-                                ladyTextures["idle"],
-                                new Rectangle((frameWidthLI * frameLI), 0, frameWidthLI, (float)ladyTextures["idle"].Height),
-                                new Vector2(ladyX, ladyY),
-                                Color.White);
+                animation(frameWidthLI, frameLI, ladyX, ladyY, ladyTextures["idle"]);
             }
 
             else if (ladyCondition == "walk")
             {
-                frameWidth = (int)frameWidthLW;
-                Raylib.DrawTextureRec(
-                                ladyTextures["walk"],
-                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyTextures["walk"].Height),
-                                new Vector2(ladyX, ladyY),
-                                Color.White);
+                animation(frameWidthLW, frameLW, ladyX, ladyY, ladyTextures["walk"]);
             }
 
             else if (ladyCondition == "back")
             {
-                frameWidth = (int)frameWidthLB;
-                Raylib.DrawTextureRec(
-                                ladyTextures["walk"],
-                                new Rectangle((frameWidthLB * frameLB), 0, frameWidthLB, (float)ladyTextures["walk"].Height),
-                                new Vector2(ladyX, ladyY),
-                                Color.White);
+                animation(frameWidthLB, frameLB, ladyX, ladyY, ladyTextures["walk"]);
             }
 
             else if (ladyCondition == "run")
             {
-                frameWidth = (int)frameWidthLW;
-                Raylib.DrawTextureRec(
-                                ladyTextures["run"],
-                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyTextures["run"].Height),
-                                new Vector2(ladyX, ladyY),
-                                Color.White);
+                animation(frameWidthLW, frameLW, ladyX, ladyY, ladyTextures["run"]);
             }
 
             else if (ladyCondition == "jump")
             {
-                frameWidth = (int)frameWidthLJ;
-                Raylib.DrawTextureRec(
-                                ladyTextures["jump"],
-                                new Rectangle((frameWidthLJ * frameLJ), 0, frameWidthLJ, (float)ladyTextures["jump"].Height),
-                                new Vector2(ladyX, ladyY),
-                                Color.White);
+                animation(frameWidthLJ, frameLJ, ladyX, ladyY, ladyTextures["jump"]);
             }
 
             else if (ladyCondition == "attack1")
@@ -1153,72 +1097,37 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             if (monkCondition == "idle")
             {
-                frameWidth = (int)frameWidthM;
-                Raylib.DrawTextureRec(
-                                monkTextures["idle"],
-                                new Rectangle((frameWidthM * frameM), 0, frameWidthM, (float)monkTextures["idle"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthM, frameM, monkX, monkY, monkTextures["idle"]);
             }
 
             else if (monkCondition == "walk")
             {
-                frameWidth = (int)frameWidthMW;
-                Raylib.DrawTextureRec(
-                                monkTextures["walk"],
-                                new Rectangle((frameWidthMW * frameMW), 0, frameWidthMW, (float)monkTextures["walk"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthMW, frameMW, monkX, monkY, monkTextures["walk"]);
             }
 
             else if (monkCondition == "back")
             {
-                frameWidth = (int)frameWidthMB;
-                Raylib.DrawTextureRec(
-                                monkTextures["walk"],
-                                new Rectangle((frameWidthMB * frameMB), 0, frameWidthMB, (float)monkTextures["walk"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthMB, frameMB, monkX, monkY, monkTextures["walk"]);
             }
 
             else if (monkCondition == "run")
             {
-                frameWidth = (int)frameWidthMR;
-                Raylib.DrawTextureRec(
-                                monkTextures["run"],
-                                new Rectangle((frameWidthMR * frameMR), 0, frameWidthMR, (float)monkTextures["run"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthMR, frameMR, monkX, monkY, monkTextures["run"]);
             }
 
             else if (monkCondition == "jump")
             {
-                frameWidth = (int)frameWidthMJ;
-                Raylib.DrawTextureRec(
-                                monkTextures["jump"],
-                                new Rectangle((frameWidthMJ * frameMJ), 0, frameWidthMJ, (float)monkTextures["jump"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthMJ, frameMJ, monkX, monkY, monkTextures["jump"]);
             }
 
             else if (monkCondition == "attack1")
             {
-                frameWidth = (int)frameWidthMA1;
-                Raylib.DrawTextureRec(
-                                monkTextures["attack1"],
-                                new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkTextures["attack1"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthMA1, frameMA1, monkX, monkY, monkTextures["attack1"]);
             }
 
             else if (monkCondition == "attack2")
             {
-                frameWidth = (int)frameWidthMA1;
-                Raylib.DrawTextureRec(
-                                monkTextures["attack2"],
-                                new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkTextures["attack2"].Height),
-                                new Vector2(monkX, monkY),
-                                Color.White);
+                animation(frameWidthMA1, frameMA1, monkX, monkY, monkTextures["attack2"]);
             }
 
         }
@@ -1228,79 +1137,44 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
             if (plebCondition == "idle")
             {
-                frameWidth = (int)frameWidthPI;
-                Raylib.DrawTextureRec(
-                                plebTextures["idle"],
-                                new Rectangle((frameWidthPI * framePI), 0, frameWidthPI, (float)plebTextures["idle"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPI, framePI, plebX, plebY, plebTextures["idle"]);
             }
 
             else if (plebCondition == "walk")
             {
-                frameWidth = (int)frameWidthPW;
-                Raylib.DrawTextureRec(
-                                plebTextures["walk"],
-                                new Rectangle((frameWidthPW * framePW), 0, frameWidthPW, (float)plebTextures["walk"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPW, framePW, plebX, plebY, plebTextures["walk"]);
             }
 
             else if (plebCondition == "back")
             {
-                frameWidth = (int)frameWidthPB;
-                Raylib.DrawTextureRec(
-                                plebTextures["walk"],
-                                new Rectangle((frameWidthPB * framePB), 0, frameWidthPB, (float)plebTextures["walk"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPB, framePB, plebX, plebY, plebTextures["walk"]);
             }
 
             else if (plebCondition == "run")
             {
-                frameWidth = (int)frameWidthPR;
-                Raylib.DrawTextureRec(
-                                plebTextures["run"],
-                                new Rectangle((frameWidthPR * framePR), 0, frameWidthPR, (float)plebTextures["run"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPR, framePR, plebX, plebY, plebTextures["run"]);
             }
 
             else if (plebCondition == "jump")
             {
-                frameWidth = (int)frameWidthPJ;
-                Raylib.DrawTextureRec(
-                                plebTextures["jump"],
-                                new Rectangle((frameWidthPJ * framePJ), 0, frameWidthPJ, (float)plebTextures["jump"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPJ, framePJ, plebX, plebY, plebTextures["jump"]);
             }
 
             else if (plebCondition == "attack1")
             {
-                frameWidth = (int)frameWidthPA1;
-                Raylib.DrawTextureRec(
-                                plebTextures["attack1"],
-                                new Rectangle((frameWidthPA1 * framePA1), 0, frameWidthPA1, (float)plebTextures["attack1"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPA1, framePA1, plebX, plebY, plebTextures["attack1"]);
             }
 
             else if (plebCondition == "attack2")
             {
-                frameWidth = (int)frameWidthPA2;
-                Raylib.DrawTextureRec(
-                                plebTextures["attack2"],
-                                new Rectangle((frameWidthPA2 * framePA2), 0, frameWidthPA2, (float)plebTextures["attack2"].Height),
-                                new Vector2(plebX, plebY),
-                                Color.White);
+                animation(frameWidthPA2, framePA2, plebX, plebY, plebTextures["attack2"]);
             }
 
         }
 
     }
 
-    
+
 
     Raylib.EndDrawing();
 }
