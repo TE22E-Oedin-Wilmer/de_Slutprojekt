@@ -37,39 +37,41 @@ ladyTextures.Add("attack2", Raylib.LoadTexture(@"Kunoichi\Attack_2.png"));
 
 Texture2D ladyFighterEat = Raylib.LoadTexture(@"Kunoichi\Eating.png");
 
-Texture2D ladyFighterIdle = Raylib.LoadTexture(@"Kunoichi\Idle.png");
-
-Texture2D ladyFighterWalk = Raylib.LoadTexture(@"Kunoichi\Walk.png");
-
-Texture2D ladyFighterRun = Raylib.LoadTexture(@"Kunoichi\Run.png");
-
-Texture2D ladyFighterJump = Raylib.LoadTexture(@"Kunoichi\Jump.png");
-
-Texture2D ladyFighterAttack1 = Raylib.LoadTexture(@"Kunoichi\Attack_1.png");
-
-Texture2D ladyFighterAttack2 = Raylib.LoadTexture(@"Kunoichi\Attack_2.png");
-
-
 
 // ************** MONK     BELOW *******************
 
+Dictionary<string, Texture2D> monkTextures = new();
 
+monkTextures.Add("idle", Raylib.LoadTexture(@"Ninja_Monk\Idle.png"));
+
+monkTextures.Add("walk", Raylib.LoadTexture(@"Ninja_Monk\Walk.png"));
+
+monkTextures.Add("run", Raylib.LoadTexture(@"Ninja_Monk\Run.png"));
+
+monkTextures.Add("jump", Raylib.LoadTexture(@"Ninja_Monk\Jump.png"));
+
+monkTextures.Add("attack1", Raylib.LoadTexture(@"Ninja_Monk\Attack_1.png"));
+
+monkTextures.Add("attack2", Raylib.LoadTexture(@"Ninja_Monk\Attack_2.png"));
 
 Texture2D monkFighterIdle1 = Raylib.LoadTexture(@"Ninja_Monk\Idle.png");
 
-Texture2D monkFighterIdle = Raylib.LoadTexture(@"Ninja_Monk\Idle.png");
-
-Texture2D monkFighterWalk = Raylib.LoadTexture(@"Ninja_Monk\Walk.png");
-
-Texture2D monkFighterRun = Raylib.LoadTexture(@"Ninja_Monk\Run.png");
-
-Texture2D monkFighterJump = Raylib.LoadTexture(@"Ninja_Monk\Jump.png");
-
-Texture2D monkFighterAttack1 = Raylib.LoadTexture(@"Ninja_Monk\Attack_1.png");
-
-Texture2D monkFighterAttack2 = Raylib.LoadTexture(@"Ninja_Monk\Attack_2.png");
 
 // ************** PLEB     BELOW *******************
+
+Dictionary<string, Texture2D> plebTextures = new();
+
+plebTextures.Add("idle", Raylib.LoadTexture(@"Ninja_Peasant\Idle.png"));
+
+plebTextures.Add("walk", Raylib.LoadTexture(@"Ninja_Peasant\Walk.png"));
+
+plebTextures.Add("run", Raylib.LoadTexture(@"Ninja_Peasant\Run.png"));
+
+plebTextures.Add("jump", Raylib.LoadTexture(@"Ninja_Peasant\Jump.png"));
+
+plebTextures.Add("attack1", Raylib.LoadTexture(@"Ninja_Peasant\Attack_1.png"));
+
+plebTextures.Add("attack2", Raylib.LoadTexture(@"Ninja_Peasant\Attack_2.png"));
 
 
 Texture2D plebFighterIdle1 = Raylib.LoadTexture(@"Ninja_Peasant\Idle.png");
@@ -130,17 +132,6 @@ attack2L.Width = 5120;
 attack2L.Height = 640;
 ladyTextures["attack2"] = attack2L;
 
-ladyFighterRun.Width = 5120;
-ladyFighterRun.Height = 640;
-
-ladyFighterJump.Width = 6400;
-ladyFighterJump.Height = 640;
-
-ladyFighterAttack1.Width = 3840;
-ladyFighterAttack1.Height = 640;
-
-ladyFighterAttack2.Width = 5120;
-ladyFighterAttack2.Height = 640;
 
 
 // ************** MONK     BELOW *******************
@@ -150,23 +141,36 @@ ladyFighterAttack2.Height = 640;
 monkFighterIdle1.Width = 4704;
 monkFighterIdle1.Height = 672;
 
-monkFighterIdle.Width = 3360;
-monkFighterIdle.Height = 480;
+Texture2D idleM = monkTextures["idle"];
+idleM.Width = 3360;
+idleM.Height = 480;
+monkTextures["idle"] = idleM;
 
-monkFighterWalk.Width = 3360;
-monkFighterWalk.Height = 480;
+Texture2D walkM = monkTextures["walk"];
+walkM.Width = 3360;
+walkM.Height = 480;
+monkTextures["walk"] = walkM;
 
-monkFighterRun.Width = 3840;
-monkFighterRun.Height = 480;
+Texture2D runM = monkTextures["run"];
+runM.Width = 3840;
+runM.Height = 480;
+monkTextures["run"] = runM;
 
-monkFighterJump.Width = 4320;
-monkFighterJump.Height = 480;
+Texture2D jumpM = monkTextures["jump"];
+jumpM.Width = 4320;
+jumpM.Height = 480;
+monkTextures["jump"] = jumpM;
 
-monkFighterAttack1.Width = 2400;
-monkFighterAttack1.Height = 480;
+Texture2D attack1M = monkTextures["attack1"];
+attack1M.Width = 2400;
+attack1M.Height = 480;
+monkTextures["attack1"] = attack1M;
 
-monkFighterAttack2.Width = 2400;
-monkFighterAttack2.Height = 480;
+Texture2D attack2M = monkTextures["attack2"];
+attack2M.Width = 2400;
+attack2M.Height = 480;
+monkTextures["attack2"] = attack2M;
+
 
 
 // ************** PLEB     BELOW *******************
@@ -175,6 +179,36 @@ monkFighterAttack2.Height = 480;
 
 plebFighterIdle1.Width = 4608;
 plebFighterIdle1.Height = 768;
+
+Texture2D idleP = plebTextures["idle"];
+idleP.Width = 2880;
+idleP.Height = 480;
+plebTextures["idle"] = idleP;
+
+Texture2D walkP = plebTextures["walk"];
+walkP.Width = 3840;
+walkP.Height = 480;
+plebTextures["walk"] = walkP;
+
+Texture2D runP = plebTextures["run"];
+runP.Width = 2880;
+runP.Height = 480;
+plebTextures["run"] = runP;
+
+Texture2D jumpP = plebTextures["jump"];
+jumpP.Width = 3840;
+jumpP.Height = 480;
+plebTextures["jump"] = jumpP;
+
+Texture2D attack1P = plebTextures["attack1"];
+attack1P.Width = 2880;
+attack1P.Height = 480;
+plebTextures["attack1"] = attack1P;
+
+Texture2D attack2P = plebTextures["attack2"];
+attack2P.Width = 1920;
+attack2P.Height = 480;
+plebTextures["attack2"] = attack2P;
 
 plebFighterIdle.Width = 2880;
 plebFighterIdle.Height = 480;
@@ -228,16 +262,16 @@ int frameLW = 0;
 int maxFramesLW = (int)(ladyTextures["walk"].Width / (int)frameWidthLW);
 
 int numFramesLA1 = 6;
-float frameWidthLA1 = (float)(ladyFighterAttack1.Width / numFramesLA1);
+float frameWidthLA1 = (float)(ladyTextures["attack1"].Width / numFramesLA1);
 float timerLA1 = 0.0f;
 int frameLA1 = 0;
-int maxFramesLA1 = (int)(ladyFighterAttack1.Width / (int)frameWidthLA1);
+int maxFramesLA1 = (int)(ladyTextures["attack1"].Width / (int)frameWidthLA1);
 
 int numFramesLA2 = 8;
-float frameWidthLA2 = (float)(ladyFighterAttack2.Width / numFramesLA2);
+float frameWidthLA2 = (float)(ladyTextures["attack2"].Width / numFramesLA2);
 float timerLA2 = 0.0f;
 int frameLA2 = 0;
-int maxFramesLA2 = (int)(ladyFighterAttack2.Width / (int)frameWidthLA2);
+int maxFramesLA2 = (int)(ladyTextures["attack2"].Width / (int)frameWidthLA2);
 
 int numFramesLB = 8;
 float frameWidthLB = (float)(ladyTextures["walk"].Width / numFramesLB);
@@ -246,10 +280,10 @@ int frameLB = 0;
 int maxFramesLB = (int)(ladyTextures["walk"].Width / (int)frameWidthLB);
 
 int numFramesLJ = 10;
-float frameWidthLJ = (float)(ladyFighterJump.Width / numFramesLJ);
+float frameWidthLJ = (float)(ladyTextures["jump"].Width / numFramesLJ);
 float timerLJ = 0.0f;
 int frameLJ = 0;
-int maxFramesLJ = (int)(ladyFighterJump.Width / (int)frameWidthLJ);
+int maxFramesLJ = (int)(ladyTextures["jump"].Width / (int)frameWidthLJ);
 
 
 
@@ -267,40 +301,40 @@ int frameM1 = 0;
 int maxFramesM1 = (int)(monkFighterIdle1.Width / (int)frameWidthM1);
 
 int numFramesM = 7;
-float frameWidthM = (float)(monkFighterIdle.Width / numFramesM);
+float frameWidthM = (float)(monkTextures["idle"].Width / numFramesM);
 float timerM = 0.0f;
 int frameM = 0;
-int maxFramesM = (int)(monkFighterIdle.Width / (int)frameWidthM);
+int maxFramesM = (int)(monkTextures["idle"].Width / (int)frameWidthM);
 
 int numFramesMW = 7;
-float frameWidthMW = (float)(monkFighterWalk.Width / numFramesMW);
+float frameWidthMW = (float)(monkTextures["walk"].Width / numFramesMW);
 float timerMW = 0.0f;
 int frameMW = 0;
-int maxFramesMW = (int)(monkFighterWalk.Width / (int)frameWidthMW);
+int maxFramesMW = (int)(monkTextures["walk"].Width / (int)frameWidthMW);
 
 int numFramesMB = 7;
-float frameWidthMB = (float)(monkFighterWalk.Width / numFramesMB);
+float frameWidthMB = (float)(monkTextures["walk"].Width / numFramesMB);
 float timerMB = 0.0f;
 int frameMB = 0;
-int maxFramesMB = (int)(monkFighterWalk.Width / (int)frameWidthMB);
+int maxFramesMB = (int)(monkTextures["walk"].Width / (int)frameWidthMB);
 
 int numFramesMR = 8;
-float frameWidthMR = (float)(monkFighterRun.Width / numFramesMR);
+float frameWidthMR = (float)(monkTextures["run"].Width / numFramesMR);
 float timerMR = 0.0f;
 int frameMR = 0;
-int maxFramesMR = (int)(monkFighterRun.Width / (int)frameWidthMR);
+int maxFramesMR = (int)(monkTextures["run"].Width / (int)frameWidthMR);
 
 int numFramesMJ = 9;
-float frameWidthMJ = (float)(monkFighterJump.Width / numFramesMJ);
+float frameWidthMJ = (float)(monkTextures["jump"].Width / numFramesMJ);
 float timerMJ = 0.0f;
 int frameMJ = 0;
-int maxFramesMJ = (int)(monkFighterJump.Width / (int)frameWidthMJ);
+int maxFramesMJ = (int)(monkTextures["jump"].Width / (int)frameWidthMJ);
 
 int numFramesMA1 = 5;
-float frameWidthMA1 = (float)(monkFighterAttack1.Width / numFramesMA1);
+float frameWidthMA1 = (float)(monkTextures["attack1"].Width / numFramesMA1);
 float timerMA1 = 0.0f;
 int frameMA1 = 0;
-int maxFramesMA1 = (int)(monkFighterAttack1.Width / (int)frameWidthMA1);
+int maxFramesMA1 = (int)(monkTextures["attack1"].Width / (int)frameWidthMA1);
 
 
 
@@ -315,46 +349,46 @@ int frameP = 0;
 int maxFramesP = (int)(plebFighterIdle1.Width / (int)frameWidthP);
 
 int numFramesPI = 6;
-float frameWidthPI = (float)(plebFighterIdle.Width / numFramesPI);
+float frameWidthPI = (float)(plebTextures["idle"].Width / numFramesPI);
 float timerPI = 0.0f;
 int framePI = 0;
-int maxFramesPI = (int)(plebFighterIdle.Width / (int)frameWidthPI);
+int maxFramesPI = (int)(plebTextures["idle"].Width / (int)frameWidthPI);
 
 int numFramesPW = 8;
-float frameWidthPW = (float)(plebFighterWalk.Width / numFramesPW);
+float frameWidthPW = (float)(plebTextures["walk"].Width / numFramesPW);
 float timerPW = 0.0f;
 int framePW = 0;
-int maxFramesPW = (int)(plebFighterWalk.Width / (int)frameWidthPW);
+int maxFramesPW = (int)(plebTextures["walk"].Width / (int)frameWidthPW);
 
 int numFramesPB = 8;
-float frameWidthPB = (float)(plebFighterWalk.Width / numFramesPB);
+float frameWidthPB = (float)(plebTextures["walk"].Width / numFramesPB);
 float timerPB = 0.0f;
 int framePB = 0;
-int maxFramesPB = (int)(plebFighterWalk.Width / (int)frameWidthPB);
+int maxFramesPB = (int)(plebTextures["walk"].Width / (int)frameWidthPB);
 
 int numFramesPR = 6;
-float frameWidthPR = (float)(plebFighterRun.Width / numFramesPR);
+float frameWidthPR = (float)(plebTextures["run"].Width / numFramesPR);
 float timerPR = 0.0f;
 int framePR = 0;
-int maxFramesPR = (int)(plebFighterRun.Width / (int)frameWidthPR);
+int maxFramesPR = (int)(plebTextures["run"].Width / (int)frameWidthPR);
 
 int numFramesPJ = 8;
-float frameWidthPJ = (float)(plebFighterJump.Width / numFramesPJ);
+float frameWidthPJ = (float)(plebTextures["jump"].Width / numFramesPJ);
 float timerPJ = 0.0f;
 int framePJ = 0;
-int maxFramesPJ = (int)(plebFighterJump.Width / (int)frameWidthPJ);
+int maxFramesPJ = (int)(plebTextures["jump"].Width / (int)frameWidthPJ);
 
 int numFramesPA1 = 6;
-float frameWidthPA1 = (float)(plebFighterAttack1.Width / numFramesPA1);
+float frameWidthPA1 = (float)(plebTextures["attack1"].Width / numFramesPA1);
 float timerPA1 = 0.0f;
 int framePA1 = 0;
-int maxFramesPA1 = (int)(plebFighterAttack1.Width / (int)frameWidthPA1);
+int maxFramesPA1 = (int)(plebTextures["attack1"].Width / (int)frameWidthPA1);
 
 int numFramesPA2 = 4;
-float frameWidthPA2 = (float)(plebFighterAttack2.Width / numFramesPA2);
+float frameWidthPA2 = (float)(plebTextures["attack2"].Width / numFramesPA2);
 float timerPA2 = 0.0f;
 int framePA2 = 0;
-int maxFramesPA2 = (int)(plebFighterAttack2.Width / (int)frameWidthPA2);
+int maxFramesPA2 = (int)(plebTextures["attack2"].Width / (int)frameWidthPA2);
 
 
 
@@ -1012,7 +1046,7 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
 
         Raylib.DrawTextureRec(
                 plebFighterIdle1,
-                new Rectangle((frameWidthP * frameP), 0, frameWidthP, (float)plebFighterIdle1.Height),
+                new Rectangle((frameWidthP * frameP), 0, frameWidthP, plebFighterIdle1.Height),
                 new Vector2(900, 350),
                 Color.White);
 
@@ -1076,8 +1110,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLW;
                 Raylib.DrawTextureRec(
-                                ladyFighterRun,
-                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyFighterRun.Height),
+                                ladyTextures["run"],
+                                new Rectangle((frameWidthLW * frameLW), 0, frameWidthLW, (float)ladyTextures["run"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
@@ -1086,8 +1120,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLJ;
                 Raylib.DrawTextureRec(
-                                ladyFighterJump,
-                                new Rectangle((frameWidthLJ * frameLJ), 0, frameWidthLJ, (float)ladyFighterJump.Height),
+                                ladyTextures["jump"],
+                                new Rectangle((frameWidthLJ * frameLJ), 0, frameWidthLJ, (float)ladyTextures["jump"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
@@ -1096,8 +1130,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLA1;
                 Raylib.DrawTextureRec(
-                                ladyFighterAttack1,
-                                new Rectangle((frameWidthLA1 * frameLA1) + 20, 0, frameWidthLA1, (float)ladyFighterAttack1.Height),
+                                ladyTextures["attack1"],
+                                new Rectangle((frameWidthLA1 * frameLA1) + 20, 0, frameWidthLA1, (float)ladyTextures["attack1"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
@@ -1106,8 +1140,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthLA2;
                 Raylib.DrawTextureRec(
-                                ladyFighterAttack2,
-                                new Rectangle((frameWidthLA2 * frameLA2) + 20, 0, frameWidthLA2, (float)ladyFighterAttack2.Height),
+                                ladyTextures["attack2"],
+                                new Rectangle((frameWidthLA2 * frameLA2) + 20, 0, frameWidthLA2, (float)ladyTextures["attack2"].Height),
                                 new Vector2(ladyX, ladyY),
                                 Color.White);
             }
@@ -1121,8 +1155,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthM;
                 Raylib.DrawTextureRec(
-                                monkFighterIdle,
-                                new Rectangle((frameWidthM * frameM), 0, frameWidthM, (float)monkFighterIdle.Height),
+                                monkTextures["idle"],
+                                new Rectangle((frameWidthM * frameM), 0, frameWidthM, (float)monkTextures["idle"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1131,8 +1165,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthMW;
                 Raylib.DrawTextureRec(
-                                monkFighterWalk,
-                                new Rectangle((frameWidthMW * frameMW), 0, frameWidthMW, (float)monkFighterWalk.Height),
+                                monkTextures["walk"],
+                                new Rectangle((frameWidthMW * frameMW), 0, frameWidthMW, (float)monkTextures["walk"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1141,8 +1175,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthMB;
                 Raylib.DrawTextureRec(
-                                monkFighterWalk,
-                                new Rectangle((frameWidthMB * frameMB), 0, frameWidthMB, (float)monkFighterWalk.Height),
+                                monkTextures["walk"],
+                                new Rectangle((frameWidthMB * frameMB), 0, frameWidthMB, (float)monkTextures["walk"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1151,8 +1185,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthMR;
                 Raylib.DrawTextureRec(
-                                monkFighterRun,
-                                new Rectangle((frameWidthMR * frameMR), 0, frameWidthMR, (float)monkFighterRun.Height),
+                                monkTextures["run"],
+                                new Rectangle((frameWidthMR * frameMR), 0, frameWidthMR, (float)monkTextures["run"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1161,8 +1195,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthMJ;
                 Raylib.DrawTextureRec(
-                                monkFighterJump,
-                                new Rectangle((frameWidthMJ * frameMJ), 0, frameWidthMJ, (float)monkFighterJump.Height),
+                                monkTextures["jump"],
+                                new Rectangle((frameWidthMJ * frameMJ), 0, frameWidthMJ, (float)monkTextures["jump"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1171,8 +1205,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthMA1;
                 Raylib.DrawTextureRec(
-                                monkFighterAttack1,
-                                new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkFighterAttack1.Height),
+                                monkTextures["attack1"],
+                                new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkTextures["attack1"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1181,8 +1215,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthMA1;
                 Raylib.DrawTextureRec(
-                                monkFighterAttack2,
-                                new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkFighterAttack2.Height),
+                                monkTextures["attack2"],
+                                new Rectangle((frameWidthMA1 * frameMA1), 0, frameWidthMA1, (float)monkTextures["attack2"].Height),
                                 new Vector2(monkX, monkY),
                                 Color.White);
             }
@@ -1196,8 +1230,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPI;
                 Raylib.DrawTextureRec(
-                                plebFighterIdle,
-                                new Rectangle((frameWidthPI * framePI), 0, frameWidthPI, (float)plebFighterIdle.Height),
+                                plebTextures["idle"],
+                                new Rectangle((frameWidthPI * framePI), 0, frameWidthPI, (float)plebTextures["idle"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }
@@ -1206,8 +1240,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPW;
                 Raylib.DrawTextureRec(
-                                plebFighterWalk,
-                                new Rectangle((frameWidthPW * framePW), 0, frameWidthPW, (float)plebFighterWalk.Height),
+                                plebTextures["walk"],
+                                new Rectangle((frameWidthPW * framePW), 0, frameWidthPW, (float)plebTextures["walk"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }
@@ -1216,8 +1250,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPB;
                 Raylib.DrawTextureRec(
-                                plebFighterWalk,
-                                new Rectangle((frameWidthPB * framePB), 0, frameWidthPB, (float)plebFighterWalk.Height),
+                                plebTextures["walk"],
+                                new Rectangle((frameWidthPB * framePB), 0, frameWidthPB, (float)plebTextures["walk"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }
@@ -1226,8 +1260,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPR;
                 Raylib.DrawTextureRec(
-                                plebFighterRun,
-                                new Rectangle((frameWidthPR * framePR), 0, frameWidthPR, (float)plebFighterRun.Height),
+                                plebTextures["run"],
+                                new Rectangle((frameWidthPR * framePR), 0, frameWidthPR, (float)plebTextures["run"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }
@@ -1236,8 +1270,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPJ;
                 Raylib.DrawTextureRec(
-                                plebFighterJump,
-                                new Rectangle((frameWidthPJ * framePJ), 0, frameWidthPJ, (float)plebFighterJump.Height),
+                                plebTextures["jump"],
+                                new Rectangle((frameWidthPJ * framePJ), 0, frameWidthPJ, (float)plebTextures["jump"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }
@@ -1246,8 +1280,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPA1;
                 Raylib.DrawTextureRec(
-                                plebFighterAttack1,
-                                new Rectangle((frameWidthPA1 * framePA1), 0, frameWidthPA1, (float)plebFighterAttack1.Height),
+                                plebTextures["attack1"],
+                                new Rectangle((frameWidthPA1 * framePA1), 0, frameWidthPA1, (float)plebTextures["attack1"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }
@@ -1256,8 +1290,8 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
             {
                 frameWidth = (int)frameWidthPA2;
                 Raylib.DrawTextureRec(
-                                plebFighterAttack2,
-                                new Rectangle((frameWidthPA2 * framePA2), 0, frameWidthPA2, (float)plebFighterAttack2.Height),
+                                plebTextures["attack2"],
+                                new Rectangle((frameWidthPA2 * framePA2), 0, frameWidthPA2, (float)plebTextures["attack2"].Height),
                                 new Vector2(plebX, plebY),
                                 Color.White);
             }

@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="**/*.png" CopyToOutputDirectory="Always"/>
+    <Content Include="Kunoichi/*.png" CopyToOutputDirectory="Always"/>
+    <Content Include="Ninja_Monk/*.png" CopyToOutputDirectory="Always"/>
+    <Content Include="Ninja_Peasant/*.png" CopyToOutputDirectory="Always"/>
+    <Content Include="*.png" CopyToOutputDirectory="Always"/>
   </ItemGroup>
 
   <ItemGroup>
