@@ -1041,7 +1041,9 @@ while (!Raylib.WindowShouldClose()) // MAIN GAME WHILE LOOP __----____----_--__-
     else if (currentRoom == 2)  //************** ROOM 2 ***************
     {
         Raylib.DrawTexture(pixelDojo, 0, 0, Color.White);
-
+        Raylib.DrawText("Controls:", 100, 100, 42, Color.White);
+        Raylib.DrawText("Movement: A, D, SPACE, SHIFT + D", 100, 200, 40, Color.White);
+        Raylib.DrawText("Combat: F, E", 100, 300, 40, Color.White);
         if (chosenCharacter == "ladyFighter")     //******* LADY BELOW******************************
         {
 
