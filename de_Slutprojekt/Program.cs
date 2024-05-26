@@ -21,7 +21,7 @@ Texture2D pixelDojo = Raylib.LoadTexture("PixelDojo.png");
 
 // ************** LADY     BELOW *******************
 
-Dictionary<string, Texture2D> ladyTextures = new();
+Dictionary<string, Texture2D> ladyTextures = new();    //att använda array i detta fall underlättar användandet av bilderna samt tillåter mig att använda dem i metoder enklare
 
 ladyTextures.Add("idle", Raylib.LoadTexture(@"Kunoichi\Idle.png"));
 
